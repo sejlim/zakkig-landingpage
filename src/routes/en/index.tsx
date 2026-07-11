@@ -1,25 +1,26 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { MainPage } from '../../components/MainPage'
+import { translations } from '../../lib/i18n'
+
+const en = translations.en
 
 export const Route = createFileRoute('/en/')({
   head: () => ({
     meta: [
-      { title: 'zakkig: Let your customers order themselves' },
+      { title: en.metaTitle },
       {
         name: 'description',
-        content:
-          'Whether for takeout or at the table, offer your customers a digital way to order and pay.',
+        content: en.metaDescription,
       },
       { property: 'og:locale', content: 'en_US' },
       { property: 'og:locale:alternate', content: 'de_DE' },
       {
         property: 'og:title',
-        content: 'zakkig: Let your customers order themselves',
+        content: en.metaTitle,
       },
       {
         property: 'og:description',
-        content:
-          'Whether for takeout or at the table, offer your customers a digital way to order and pay.',
+        content: en.metaDescription,
       },
       { property: 'og:image', content: '/media/full.jpg' },
       { property: 'og:type', content: 'website' },

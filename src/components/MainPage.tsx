@@ -44,7 +44,7 @@ export function MainPage() {
             <div className="lg:col-span-5 flex justify-center lg:justify-start">
               <img
                 src="/media/waiting_line.jpg"
-                alt="Wartezeiten in der Gastronomie"
+                alt={t('waitingLineImageAlt')}
                 className="aspect-[3/4] w-full max-w-sm object-cover rounded-[2rem]"
               />
             </div>
@@ -188,14 +188,21 @@ export function MainPage() {
             <div className="lg:col-span-5 flex justify-center lg:justify-start">
               <div className="w-full max-w-sm flex flex-col items-center gap-6">
                 <div className="aspect-[3/4] w-full bg-zinc-100 flex flex-col items-center justify-center text-zinc-400 font-light text-sm rounded-[2rem]">
-                  <span>[ Portrait: Selim ]</span>
+                  <span>{t('portraitPlaceholderText')}</span>
                 </div>
                 {/* Trust Badge - MARS Logo */}
-                <img
-                  src="/media/mars_full.svg"
-                  alt="MARS Center for Entrepreneurship Logo"
-                  className="h-16 w-auto object-contain block filter grayscale brightness-50 hover:grayscale-0 hover:brightness-100 transition-all duration-300"
-                />
+                <a
+                  href="https://launchtomars.de/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex"
+                >
+                  <img
+                    src="/media/mars_full.svg"
+                    alt={t('marsLogoAlt')}
+                    className="h-16 w-auto object-contain block filter grayscale brightness-50 hover:grayscale-0 hover:brightness-100 transition-all duration-300"
+                  />
+                </a>
               </div>
             </div>
 
@@ -258,7 +265,7 @@ export function MainPage() {
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
-              aria-label="Scroll to top"
+              aria-label={t('scrollToTopLabel')}
             >
               <img
                 src="/media/full.svg"

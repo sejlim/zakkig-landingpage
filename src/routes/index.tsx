@@ -1,25 +1,26 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { MainPage } from '../components/MainPage'
+import { translations } from '../lib/i18n'
+
+const de = translations.de
 
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: 'zakkig: Lass deine Kunden selbst bestellen' },
+      { title: de.metaTitle },
       {
         name: 'description',
-        content:
-          'Egal ob zum Mitnehmen oder am Tisch, biete deinen Kunden eine digitale Möglichkeit zum Bestellen und Bezahlen.',
+        content: de.metaDescription,
       },
       { property: 'og:locale', content: 'de_DE' },
       { property: 'og:locale:alternate', content: 'en_US' },
       {
         property: 'og:title',
-        content: 'zakkig: Lass deine Kunden selbst bestellen',
+        content: de.metaTitle,
       },
       {
         property: 'og:description',
-        content:
-          'Egal ob zum Mitnehmen oder am Tisch, biete deinen Kunden eine digitale Möglichkeit zum Bestellen und Bezahlen.',
+        content: de.metaDescription,
       },
       { property: 'og:image', content: '/media/full.jpg' },
       { property: 'og:type', content: 'website' },

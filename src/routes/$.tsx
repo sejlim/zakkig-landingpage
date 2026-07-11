@@ -1,19 +1,24 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useTranslation } from '../lib/i18n'
+import { translations, useTranslation } from '../lib/i18n'
 
 export const Route = createFileRoute('/$')({
-  head: () => ({
-    meta: [
-      { title: 'zakkig: Seite nicht gefunden' },
-      { name: 'robots', content: 'noindex, follow' },
-      { name: 'description', content: 'Seite nicht gefunden.' },
-      { property: 'og:title', content: 'zakkig: Seite nicht gefunden' },
-      { property: 'og:description', content: 'Seite nicht gefunden.' },
-      { property: 'og:image', content: '/media/full.jpg' },
-      { property: 'og:type', content: 'website' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-    ],
-  }),
+  head: ({ location }) => {
+    const locale = location.pathname.startsWith('/en') ? 'en' : 'de'
+    const copy = translations[locale]
+
+    return {
+      meta: [
+        { title: `zakkig: ${copy.notFoundTitle}` },
+        { name: 'robots', content: 'noindex, follow' },
+        { name: 'description', content: copy.notFoundText },
+        { property: 'og:title', content: `zakkig: ${copy.notFoundTitle}` },
+        { property: 'og:description', content: copy.notFoundText },
+        { property: 'og:image', content: '/media/full.jpg' },
+        { property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+      ],
+    }
+  },
   component: NotFound,
 })
 
@@ -24,8 +29,12 @@ function NotFound() {
   return (
     <div className="bg-black text-white min-h-screen flex items-center justify-center px-6">
       <div className="max-w-2xl text-center select-none">
-        <h1 className="text-6xl md:text-8xl font-light tracking-tighter mb-4 text-zinc-700 select-none">404</h1>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-6 text-white leading-tight whitespace-nowrap">{t('notFoundTitle')}</h2>
+        <h1 className="text-6xl md:text-8xl font-light tracking-tighter mb-4 text-zinc-700 select-none">
+          404
+        </h1>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-6 text-white leading-tight whitespace-nowrap">
+          {t('notFoundTitle')}
+        </h2>
         <p className="text-zinc-500 font-light mb-8 text-base sm:text-lg">
           {t('notFoundText')}
         </p>

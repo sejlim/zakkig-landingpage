@@ -7,6 +7,7 @@ import { addToWaitlist } from '../server/waitlist.functions'
 
 export function WaitlistForm() {
   const { t, locale } = useTranslation()
+  const privacyHref = locale === 'en' ? '/en/privacy' : '/datenschutz'
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle')
@@ -61,9 +62,7 @@ export function WaitlistForm() {
     // Validation (Only runs on submit)
     if (!normalizedEmail) {
       setToastTone('error')
-      setToastMessage(
-        locale === 'en' ? 'Email is required' : 'E-Mail ist erforderlich',
-      )
+      setToastMessage(t('formRequiredError'))
       setToastPhase('enter')
       setShowRedText(true)
       return
@@ -72,9 +71,7 @@ export function WaitlistForm() {
     const parse = z.string().email().safeParse(normalizedEmail)
     if (!parse.success) {
       setToastTone('error')
-      setToastMessage(
-        locale === 'en' ? 'Invalid email address' : 'Ungültige E-Mail-Adresse',
-      )
+      setToastMessage(t('formInvalidEmailError'))
       setToastPhase('enter')
       setShowRedText(true)
       return
@@ -177,33 +174,14 @@ export function WaitlistForm() {
         </button>
       </form>
       <p className="mt-4 text-xs text-zinc-500 font-light text-left leading-normal px-4">
-        {locale === 'en' ? (
-          <>
-            By joining the waitlist, you agree to our{' '}
-            <a
-              href="https://zakkig.de/en/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:underline font-normal"
-            >
-              Privacy Policy
-            </a>
-            .
-          </>
-        ) : (
-          <>
-            Mit dem Beitreten zur Warteliste stimmst du unserer{' '}
-            <a
-              href="https://zakkig.de/datenschutz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:underline font-normal"
-            >
-              Datenschutzerklärung
-            </a>{' '}
-            zu.
-          </>
-        )}
+        {t('waitlistConsentPrefix')}{' '}
+        <a
+          href={privacyHref}
+          className="text-white hover:underline font-normal"
+        >
+          {t('waitlistConsentLinkText')}
+        </a>{' '}
+        {t('waitlistConsentSuffix')}
       </p>
 
       {/* Radical Minimalist Toast Portal (fixed top-middle) */}
