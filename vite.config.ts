@@ -8,6 +8,14 @@ import tailwindcss from '@tailwindcss/vite'
 
 const config = defineConfig({
   resolve: { tsconfigPaths: true },
+  server: {
+    host: true,
+    allowedHosts: ['zakkig.de', '.zakkig.de', 'localhost'],
+  },
+  preview: {
+    host: true,
+    allowedHosts: ['zakkig.de', '.zakkig.de', 'localhost'],
+  },
   plugins: [devtools(), tailwindcss(), tanstackStart(), viteReact()],
 })
 
