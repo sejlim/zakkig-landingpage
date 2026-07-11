@@ -6,6 +6,7 @@ export const Route = createFileRoute('/datenschutz')({
       { title: 'zakkig: Datenschutzerklärung' },
       { name: 'robots', content: 'noindex, follow' },
       { name: 'description', content: 'Datenschutzerklärung von zakkig.' },
+      { property: 'og:locale', content: 'de_DE' },
       { property: 'og:title', content: 'zakkig: Datenschutzerklärung' },
       {
         property: 'og:description',
@@ -15,6 +16,7 @@ export const Route = createFileRoute('/datenschutz')({
       { property: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary_large_image' },
     ],
+    links: [{ rel: 'canonical', href: 'https://zakkig.de/datenschutz' }],
   }),
   component: Datenschutz,
 })

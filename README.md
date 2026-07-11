@@ -1,204 +1,180 @@
-Welcome to your new TanStack Start app! 
+# zakkig Landingpage
 
-# Getting Started
+Landingpage und Wartelisten-Frontend für zakkig, aufgebaut mit TanStack Start, TanStack Router, React, TypeScript und Tailwind CSS.
 
-To run this application:
+## Projektüberblick
+
+Die Anwendung ist eine einseitige Marketingseite mit mehreren inhaltlichen Abschnitten, zweisprachiger Oberfläche und einer Wartelisten-Formularstrecke. Der Fokus liegt auf einer klaren Präsentation des Produkts, einer direkten Kontaktaufnahme über E-Mail und einer kleinen serverseitigen Speicherung der eingetragenen Adressen.
+
+Wichtige Bestandteile:
+
+- Startseite mit Hero, Problem-, Lösungs- und About-Bereich
+- Wartelisten-Formular mit lokaler Validierung, Server-Call und Toast-Rückmeldungen
+- DE/EN-Routing mit sprachabhängigen Texten
+- Serverseitige SQLite-Speicherung der Leads
+- Statische Assets in `public/media`
+
+## Projektstruktur
+
+Die wichtigsten Ordner und Dateien:
+
+- `src/components/` enthält die wiederverwendbaren UI-Bausteine
+- `src/routes/` enthält die Datei-basierten Routes von TanStack Router
+- `src/server/` enthält serverseitige Logik wie die Wartelisten-Speicherung
+- `src/lib/` enthält Hilfsfunktionen wie Datenbank- und i18n-Setup
+- `src/styles.css` enthält globale Styles und Animationen
+- `public/media/` enthält Bilder, Logos und Videoassets
+
+## Lokales Starten
+
+Voraussetzung ist ein installiertes Node.js-Setup mit dem im Projekt definierten Paketmanager.
 
 ```bash
 npm install
 npm run dev
 ```
 
-# Building For Production
+Die Anwendung läuft dann standardmäßig auf Port 3000.
 
-To build this application for production:
+## Produktions-Build
 
 ```bash
 npm run build
 ```
 
-## Testing
+Der Build erzeugt Client- und SSR-Ausgaben und prüft dabei auch die serverseitigen Teile der Anwendung.
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+## Verfügbare Skripte
 
 ```bash
+npm run dev
+npm run generate-routes
+npm run build
+npm run preview
 npm run test
-```
-
-## Styling
-
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
-
-### Removing Tailwind CSS
-
-If you prefer not to use Tailwind CSS:
-
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Uninstall the packages: `npm install @tailwindcss/vite tailwindcss -D`
-
-## Linting & Formatting
-
-
-This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
-
-```bash
 npm run lint
 npm run format
 npm run check
 ```
 
+### Bedeutung der Skripte
 
+- `dev` startet den lokalen Entwicklungsserver
+- `generate-routes` erzeugt die Route-Definitionen aus dem Dateisystem
+- `build` erstellt die Produktionsversion
+- `preview` startet eine lokale Vorschau des Builds
+- `test` führt die Vitest-Tests aus
+- `lint` prüft den Code mit ESLint
+- `format` formatiert Code mit Prettier und behebt ESLint-Probleme, soweit möglich
+- `check` prüft nur die Formatierung
+
+## Styling
+
+Das Frontend nutzt Tailwind CSS als primäres Styling-System. Globale Stile, Schrift und Animationen liegen in `src/styles.css`.
+
+Wichtige Punkte:
+
+- Die Seite verwendet eine Poppins-Schriftfamilie
+- Das Layout ist bewusst dark-first gehalten
+- Toasts und kleine UI-Übergänge werden über eigene Keyframes animiert
 
 ## Routing
 
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
+TanStack Router verwaltet die Navigation über Datei-Routing in `src/routes`.
 
-### Adding A Route
+Relevante Routen:
 
-To add a new route to your application just add a new file in the `./src/routes` directory.
+- `src/routes/index.tsx` für die Hauptseite
+- `src/routes/impressum.tsx` für das Impressum
+- `src/routes/datenschutz.tsx` für die Datenschutzerklärung
+- `src/routes/en/index.tsx` für die englische Startseite
+- `src/routes/en/legal.tsx` für das englische Legal Notice
+- `src/routes/en/privacy.tsx` für die englische Datenschutzerklärung
 
-TanStack will automatically generate the content of the route file for you.
+Die Root-Route in `src/routes/__root.tsx` definiert das Dokument-Shell-Layout, bindet globale Styles ein und rendert den Devtools-Container.
 
-Now that you have two routes you can use a `Link` component to navigate between them.
+## Wartelisten-Formular
 
-### Adding Links
+Die Formularlogik liegt in `src/components/WaitlistForm.tsx`.
 
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
+Verhalten:
 
-```tsx
-import { Link } from "@tanstack/react-router";
+- E-Mail wird vor dem Absenden getrimmt und in Kleinbuchstaben normalisiert
+- Leere oder ungültige Eingaben erzeugen einen Fehler-Toast
+- Erfolgreiche Einträge erzeugen einen Bestätigungs-Toast
+- Doppelte E-Mails werden serverseitig abgefangen und separat gemeldet
+- Toasts erscheinen oben und verschwinden mit einer sanften Exit-Animation
+
+## Serverseitige Speicherung
+
+Die Wartelisten-Datenbank wird in `data/waitlist.db` angelegt und nicht im Repository-Root gespeichert.
+
+Details:
+
+- Die DB wird in `src/lib/db.ts` initialisiert
+- Der Ordner `data/` wird beim Start automatisch erstellt
+- SQLite wird über `better-sqlite3` verwendet
+- Die Tabelle `leads` enthält eine eindeutige `email`-Spalte
+
+## Internationalisierung
+
+Die Sprachlogik liegt in `src/lib/i18n.ts`.
+
+Aktuell unterstützt:
+
+- Deutsch
+- Englisch
+
+Die Sprache wird anhand der Route bestimmt, also etwa `/` für Deutsch und `/en` für Englisch.
+
+## Medien und Assets
+
+Statische Medien liegen in `public/media` und werden direkt vom Frontend referenziert.
+
+Typische Assets sind:
+
+- Logo-Dateien
+- Hero-Video und Vorschaubild
+- Illustrationen und Bildmaterial für die Abschnitte
+
+## Qualität und Pflege
+
+Vor Änderungen lohnt sich typischerweise:
+
+```bash
+npm run lint
+npm run build
 ```
 
-Then anywhere in your JSX you can use it like so:
+Wenn sich Routing-Dateien ändern, kann zusätzlich `npm run generate-routes` relevant sein.
 
-```tsx
-<Link to="/about">About</Link>
-```
+## Hinweise zur Weiterentwicklung
 
-This will create a link that will navigate to the `/about` route.
+- Neue Seiten sollten als neue Dateien in `src/routes/` angelegt werden
+- Neue Texte sollten über die i18n-Map ergänzt werden
+- Serverseitige Logik gehört nach Möglichkeit in `src/server/` oder in `.server`-Dateien
+- Lokale Daten wie die SQLite-Datei bleiben in `data/` und werden nicht committed
 
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
+## Technologiestack
 
-### Using A Layout
+- React 19
+- TypeScript
+- TanStack Start
+- TanStack Router
+- TanStack React Form
+- Tailwind CSS
+- SQLite über `better-sqlite3`
 
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
+## Kurzfassung für neue Entwickler
 
-Here is an example layout that includes a header:
+Wenn du das Projekt zum ersten Mal öffnest, sind die wichtigsten Einstiegspunkte:
 
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+- `src/components/MainPage.tsx` für den Seitenaufbau
+- `src/components/WaitlistForm.tsx` für die komplette Wartelisteninteraktion
+- `src/server/waitlist.ts` für die DB-Logik
+- `src/routes/__root.tsx` für das globale Layout
+- `src/styles.css` für Animationen und globale Styles
 
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
-```
+## Support
 
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-## Server Functions
-
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
-
-## API Routes
-
-You can create API routes by using the `server` property in your route definitions:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
+Für lokale Entwicklung und Anpassungen reichen in der Regel `npm run dev`, `npm run lint` und `npm run build` aus. Weitere projektinterne Entscheidungen lassen sich direkt über die genannten Einstiegspunkte nachvollziehen.

@@ -52,9 +52,13 @@ export function MainPage() {
             {/* Right side: text starts at column 7 */}
             <div className="lg:col-start-7 lg:col-span-6 flex flex-col items-start text-left">
               <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter leading-tight mb-8">
-                {t('painTitle').split('\n').map((line, idx) => (
-                  <span key={idx} className="block">{line}</span>
-                ))}
+                {t('painTitle')
+                  .split('\n')
+                  .map((line, idx) => (
+                    <span key={idx} className="block">
+                      {line}
+                    </span>
+                  ))}
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-zinc-600 font-light leading-relaxed max-w-[36ch]">
                 {t('painText')}
@@ -93,16 +97,28 @@ export function MainPage() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div className="flex flex-col">
-                <h4 className="text-xl font-medium mb-3 text-white">{t('glanceYouTitle')}</h4>
-                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">{t('glanceYouText')}</p>
+                <h4 className="text-xl font-medium mb-3 text-white">
+                  {t('glanceYouTitle')}
+                </h4>
+                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
+                  {t('glanceYouText')}
+                </p>
               </div>
               <div className="flex flex-col">
-                <h4 className="text-xl font-medium mb-3 text-white">{t('glanceCustomersTitle')}</h4>
-                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">{t('glanceCustomersText')}</p>
+                <h4 className="text-xl font-medium mb-3 text-white">
+                  {t('glanceCustomersTitle')}
+                </h4>
+                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
+                  {t('glanceCustomersText')}
+                </p>
               </div>
               <div className="flex flex-col">
-                <h4 className="text-xl font-medium mb-3 text-white">{t('glanceKitchenTitle')}</h4>
-                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">{t('glanceKitchenText')}</p>
+                <h4 className="text-xl font-medium mb-3 text-white">
+                  {t('glanceKitchenTitle')}
+                </h4>
+                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
+                  {t('glanceKitchenText')}
+                </p>
               </div>
             </div>
           </div>
@@ -114,16 +130,28 @@ export function MainPage() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div className="flex flex-col">
-                <h4 className="text-xl font-medium mb-3 text-white">{t('step1Title')}</h4>
-                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">{t('step1Text')}</p>
+                <h4 className="text-xl font-medium mb-3 text-white">
+                  {t('step1Title')}
+                </h4>
+                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
+                  {t('step1Text')}
+                </p>
               </div>
               <div className="flex flex-col">
-                <h4 className="text-xl font-medium mb-3 text-white">{t('step2Title')}</h4>
-                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">{t('step2Text')}</p>
+                <h4 className="text-xl font-medium mb-3 text-white">
+                  {t('step2Title')}
+                </h4>
+                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
+                  {t('step2Text')}
+                </p>
               </div>
               <div className="flex flex-col">
-                <h4 className="text-xl font-medium mb-3 text-white">{t('step3Title')}</h4>
-                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">{t('step3Text')}</p>
+                <h4 className="text-xl font-medium mb-3 text-white">
+                  {t('step3Title')}
+                </h4>
+                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
+                  {t('step3Text')}
+                </p>
               </div>
             </div>
           </div>
@@ -132,12 +160,20 @@ export function MainPage() {
           <div className="pt-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
               <div>
-                <h4 className="text-2xl font-semibold tracking-tight mb-4 text-white">{t('accountingTitle')}</h4>
-                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">{t('accountingText')}</p>
+                <h4 className="text-2xl font-semibold tracking-tight mb-4 text-white">
+                  {t('accountingTitle')}
+                </h4>
+                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
+                  {t('accountingText')}
+                </p>
               </div>
               <div>
-                <h4 className="text-2xl font-semibold tracking-tight mb-4 text-white">{t('pricingTitle')}</h4>
-                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">{t('pricingText')}</p>
+                <h4 className="text-2xl font-semibold tracking-tight mb-4 text-white">
+                  {t('pricingTitle')}
+                </h4>
+                <p className="text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
+                  {t('pricingText')}
+                </p>
               </div>
             </div>
           </div>
@@ -183,29 +219,42 @@ export function MainPage() {
           <div className="pb-20 mb-12 flex flex-col gap-10">
             <div className="flex flex-col gap-6">
               <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter leading-tight">
-                {t('footerTitle').split('\n').map((line, idx) => (
-                  <span key={idx} className="block">{line}</span>
-                ))}
+                {t('footerTitle')
+                  .split('\n')
+                  .map((line, idx) => (
+                    <span key={idx} className="block">
+                      {line}
+                    </span>
+                  ))}
               </h2>
               <p className="text-zinc-400 font-light leading-relaxed max-w-[36ch] text-base sm:text-lg md:text-xl">
-                {t('footerText').split('\n').map((line, idx) => (
-                  <span key={idx} className="block">{line}</span>
-                ))}
+                {t('footerText')
+                  .split('\n')
+                  .map((line, idx) => (
+                    <span key={idx} className="block">
+                      {line}
+                    </span>
+                  ))}
               </p>
             </div>
 
             <WaitlistForm />
 
             <div className="pt-4 flex flex-col gap-2 items-end text-right">
-              <p className="text-zinc-500 font-light text-base sm:text-lg md:text-xl">{t('footerContact')}</p>
-              <a href="mailto:selim@zakkig.de" className="text-white hover:underline text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight">
+              <p className="text-zinc-500 font-light text-base sm:text-lg md:text-xl">
+                {t('footerContact')}
+              </p>
+              <a
+                href="mailto:selim@zakkig.de"
+                className="text-white hover:underline text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight"
+              >
                 selim@zakkig.de
               </a>
             </div>
           </div>
 
           {/* Legal Footer Links */}
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-zinc-500 font-light gap-4">
+          <div className="flex items-end justify-between gap-4 text-sm text-zinc-500 font-light md:items-center">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
@@ -218,11 +267,17 @@ export function MainPage() {
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
             </button>
-            <div className="flex space-x-6 text-xs md:text-sm tracking-widest">
-              <Link to={isEn ? '/en/legal' : '/impressum'} className="font-bold uppercase hover:text-white transition-colors duration-200">
+            <div className="flex flex-col items-end gap-1 text-right text-xs md:flex-row md:gap-6 md:text-sm tracking-widest">
+              <Link
+                to={isEn ? '/en/legal' : '/impressum'}
+                className="font-bold uppercase hover:text-white transition-colors duration-200"
+              >
                 {t('legalLink')}
               </Link>
-              <Link to={isEn ? '/en/privacy' : '/datenschutz'} className="font-bold uppercase hover:text-white transition-colors duration-200">
+              <Link
+                to={isEn ? '/en/privacy' : '/datenschutz'}
+                className="font-bold uppercase hover:text-white transition-colors duration-200"
+              >
                 {t('privacyLink')}
               </Link>
             </div>

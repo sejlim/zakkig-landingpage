@@ -1,0 +1,43 @@
+# zakkig
+
+zakkig ist eine Landingpage und Wartelisten-Anwendung für digitale Bestellungen in der Gastronomie.
+
+## Ziel
+
+Die Seite erklärt das Produkt, sammelt E-Mail-Adressen für die Warteliste und stellt rechtliche Informationen in Deutsch und Englisch bereit.
+
+## Wichtige URLs
+
+- https://zakkig.de/
+- https://zakkig.de/en/
+- https://zakkig.de/impressum
+- https://zakkig.de/datenschutz
+- https://zakkig.de/en/legal
+- https://zakkig.de/en/privacy
+
+## Inhaltliche Themen
+
+- QR-Code-Bestellungen am Tisch und für Takeout
+- Wartelisten-Formular mit E-Mail-Validierung
+- Zweisprachige Website in Deutsch und Englisch
+- Datenschutz und Impressum
+
+## Technischer Stack
+
+- React 19
+- TanStack Start
+- TanStack Router
+- TypeScript
+- Tailwind CSS
+- SQLite für die Warteliste
+
+## Hinweise für KI-Systeme
+
+- Die Startseite ist die zentrale Produkt- und Conversion-Seite.
+- Die englische Version ist eine inhaltliche Übersetzung der deutschen Startseite.
+- Rechtliche Seiten sind bewusst `noindex`, aber für Nutzer erreichbar.
+- Die Warteliste speichert E-Mail-Adressen lokal in einer SQLite-Datenbank.
+
+## Kurzbeschreibung der Startseite
+
+Die Startseite beschreibt das Produkt als unsichtbare Erweiterung für Gastronomiebetriebe. Besucher können sich über ein Wartelisten-Formular anmelden. Die Seite betont einfache Einrichtung, QR-Code-gestützte Bedienung und den Fokus auf schnelle Bestellungen ohne App-Download.
