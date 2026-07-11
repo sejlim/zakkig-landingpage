@@ -71,7 +71,7 @@ function RootDocument() {
 
   // Helper to determine target paths for language toggle
   let deTarget = '/'
-  let enTarget = '/en/'
+  let enTarget = '/en'
 
   if (pathname === '/impressum' || pathname === '/en/legal') {
     deTarget = '/impressum'
@@ -90,7 +90,7 @@ function RootDocument() {
         {/* Transparent Non-Sticky Header */}
         {showHeader && (
           <header className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-8 md:px-10 max-w-7xl mx-auto">
-            <Link to={isEn ? '/en/' : '/'} className="flex items-center">
+            <Link to={isEn ? '/en' : '/'} className="flex items-center">
               <img
                 src="/media/full.svg"
                 alt="zakkig Logo"

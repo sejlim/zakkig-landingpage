@@ -2,8 +2,8 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { translations, useTranslation } from '../lib/i18n'
 
 export const Route = createFileRoute('/$')({
-  head: ({ location }) => {
-    const locale = location.pathname.startsWith('/en') ? 'en' : 'de'
+  head: ({ params }) => {
+    const locale = params?._splat?.startsWith('en') ? 'en' : 'de'
     const copy = translations[locale]
 
     return {
@@ -39,7 +39,7 @@ function NotFound() {
           {t('notFoundText')}
         </p>
         <Link
-          to={isEn ? '/en/' : '/'}
+          to={isEn ? '/en' : '/'}
           className="px-6 py-3 bg-white text-black hover:bg-zinc-200 transition-colors duration-200 rounded-full font-semibold inline-block text-sm cursor-pointer"
         >
           {t('backHome')}
