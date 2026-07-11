@@ -24,13 +24,13 @@ function Legal() {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="mb-8">
           <Link
-            to="/en/"
+            to="/en"
             className="text-xs md:text-sm tracking-widest font-bold uppercase text-zinc-500 hover:text-white transition-colors duration-200"
           >
             Back to home
           </Link>
         </div>
-        <article className="prose-sm prose-invert lg:prose lg:prose-invert max-w-3xl focus:outline-none">
+        <article className="prose-sm prose-invert lg:prose-xl lg:prose-invert focus:outline-none">
           <h1>Legal Notice</h1>
           <p>Information provided according to § 5 DDG</p>
           <p>

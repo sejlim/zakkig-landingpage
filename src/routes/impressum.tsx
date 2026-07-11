@@ -30,7 +30,7 @@ function Impressum() {
             Zurück zur Startseite
           </Link>
         </div>
-        <article className="prose-sm prose-invert lg:prose lg:prose-invert max-w-3xl focus:outline-none">
+        <article className="prose-sm prose-invert lg:prose-xl lg:prose-invert focus:outline-none">
           <h1>Impressum</h1>
           <p>Angaben gemäß § 5 DDG</p>
           <p>

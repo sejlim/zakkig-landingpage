@@ -33,9 +33,9 @@ function Datenschutz() {
             Zurück zur Startseite
           </Link>
         </div>
-        <article className="prose-sm prose-invert lg:prose lg:prose-invert max-w-3xl focus:outline-none">
+        <article className="prose-sm prose-invert lg:prose-xl lg:prose-invert focus:outline-none">
           <h1>Datenschutzerklärung</h1>
-          <p>Stand: 26. Juni 2026</p>
+          <p>Stand: 11. Juli 2026</p>
 
           <h2 id="m3">Verantwortlicher</h2>
           <p>
