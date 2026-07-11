@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from '../lib/i18n'
-import { addToWaitlist } from '../server/waitlist'
+import { addToWaitlist } from '../server/waitlist.functions'
 
 export function WaitlistForm() {
   const { t, locale } = useTranslation()
